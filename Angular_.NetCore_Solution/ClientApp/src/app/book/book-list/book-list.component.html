@@ -1,0 +1,21 @@
+<h1 id="tableLabel">Books</h1>
+
+<p *ngIf="!books"><em>Loading...</em></p>
+
+<a routerLink="add">ADD BOOK</a>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="books">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>SSN</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books" style="cursor: pointer;">
+      <td  [routerLink]="['update', book.id]">{{ book.name }}</td>
+      <td  [routerLink]="['update', book.id]">{{ book.ssn }}</td>
+      <td (click)="delete_onClick(book.id)"><a href="javascript:void(0)">DELETE</a></td>
+    </tr>
+  </tbody>
+</table>
